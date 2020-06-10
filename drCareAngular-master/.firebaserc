@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "drcare-319b6": {
+      "hosting": {
+        "drcareAngular": [
+          "drcare-319b6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "drcare-319b6"
+  }
+}

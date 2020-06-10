@@ -1,0 +1,70 @@
+<div class="wrapper py-5">
+    <section class="bg-light py-0">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-xl-11 col-lg-11 col-md-11">
+                    <button (click)="addDiagnosis()" class="btn btn-primary rounded float-right" type="button">Add
+                        Diagnosis
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="allVisits.length > 0" class="bg-light pb-5">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
+                    <div class="lead d-flex">
+                        All Visits
+                        <!-- <button (click)="addDiagnosis()" class="btn btn-primary mb-2 ml-auto rounded" type="button">Add
+                            Diagnosis</button> -->
+                    </div>
+                    <div class="table-responsive">
+                        <table class="hover table mb-0 text-right">
+                            <thead class="bg-light border-top">
+                                <tr>
+                                    <th scope="col" class="border-0 text-left">
+                                        Records
+                                    </th>
+                                    <th scope="col" class="border-0">
+                                        Doctor Name
+                                    </th>
+                                    <th scope="col" class="border-0">
+                                        Diagnosis Date
+                                    </th>
+                                    <th scope="col" class="border-0">
+                                        Details
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of allVisits;let i=index">
+                                    <th scope="row" class="text-left">
+                                        {{i+1}}
+                                    </th>
+                                    <td>
+                                        {{ item.Doctor.Name }}
+                                    </td>
+                                    <td>
+                                        {{item.DiagnosisDate | date  }}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning rounded"
+                                            [routerLink]="['/doctor/patient/visit/details/'+ item._id]"
+                                            type="button">Details</button>
+    
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div *ngIf="allVisits.length === 0" class="alert alert-primary text-center my-5" role="alert">
+    <h4 class="alert-heading">Opps</h4>
+    No Visits Found for this Patient
+</div>

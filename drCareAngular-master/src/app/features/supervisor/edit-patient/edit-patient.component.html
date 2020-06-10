@@ -1,0 +1,152 @@
+<section class="bg-light pb-4 pb-md-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-xl-9 col-lg-10 col-md-11">
+                <div class="row mt-5 mb-4">
+                    <div class="col">
+                        <h3 class="mb-0 pb-0">Edit patient info</h3>
+                        <small>This will never be made public</small>
+
+                    </div>
+                </div>
+                <form class="pb-5" [formGroup]="editPatientForm" (ngSubmit)="editPatient()">
+
+                    <div class="alert alert-danger mt-3" *ngIf="!editPatientForm.valid && generalFormError">
+                        One or More Fields are required
+                    </div>
+
+                    <!-- Profile Creation Date -->
+                    <div class="row form-row">
+
+                        <!-- Name -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="city">Name</label>
+                                <input formControlName="Name" [(ngModel)]="patientInfo.Name" type="text"
+                                    class="form-control" id="city">
+                            </div>
+
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="editPatientForm.controls.Name?.touched && editPatientForm.controls.Name.errors?.required">
+                                Name is Required
+                            </div>
+                        </div>
+
+                        <!-- National ID -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="country">National ID</label>
+                                <input formControlName="NID" [(ngModel)]="patientInfo.NID" pattern="^(\d{14})$"
+                                    type="text" class="form-control" id="country">
+                                <small>The user will use this to login to his profile</small>
+                            </div>
+
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="editPatientForm.controls.NID?.touched && editPatientForm.controls.NID.errors?.required">
+                                National ID is Required
+                            </div>
+
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="editPatientForm.controls.NID?.touched && editPatientForm.controls.NID.errors?.pattern?.requiredPattern">
+                                National ID must be 14 Numbers
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-row">
+                        <!-- Patient Password -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="password">Patient Password</label>
+                                <input formControlName="Password" [(ngModel)]="patientInfo.Password" type="text"
+                                    class="form-control" id="password">
+                                <small>The user will use this to login to his profile</small>
+                            </div>
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="editPatientForm.controls.Password?.touched && editPatientForm.controls.Password.errors?.required">
+                                Patient Password is Required
+                            </div>
+                        </div>
+
+                        <!-- Date of Birth -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="birthday">Date of Birth</label>
+                                <!-- <input type="hidden" id="birthday" class="form-control flatpickr-input"
+                                    data-flatpickr="data-flatpickr" data-alt-input="true"
+                                    placeholder="Select a date"> -->
+                                <input formControlName="DateOfBirth" [(ngModel)]="patientInfo.DateOfBirth"
+                                    class="form-control input" placeholder="Select a date" type="text" bsDatepicker
+                                    [bsConfig]="DOBConfig">
+                            </div>
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="editPatientForm.controls.DateOfBirth?.touched && editPatientForm.controls.DateOfBirth.errors?.required">
+                                Date Of Birth is Required
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Profile Creation Date -->
+                    <div class="row form-row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="profileCreationDate">Profile Creation Date</label>
+                                <input formControlName="ProfileCreationDate"
+                                    [(ngModel)]="patientInfo.ProfileCreationDate" bsDatepicker [bsConfig]="PCDConfig"
+                                    class="form-control disabled" id="profileCreationDate" disabled>
+                                <small>Auto captured from pc date</small>
+                            </div>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="col-sm-6">
+                            <label for="birthday">Gender</label>
+                            <div class="d-flex flex-wrap">
+                                <div class="custom-control custom-radio mr-4">
+                                    <input formControlName="Gender" [(ngModel)]="patientInfo.Gender" type="radio"
+                                        id="radio-1" name="Gender" value="male" class="custom-control-input">
+                                    <label class="custom-control-label" for="radio-1">Male</label>
+                                </div>
+                                <!-- checked="" -->
+                                <div class="custom-control custom-radio mr-4">
+                                    <input formControlName="Gender" [(ngModel)]="patientInfo.Gender" type="radio"
+                                        id="radio-2" name="Gender" value="female" class="custom-control-input">
+                                    <label class="custom-control-label" for="radio-2">Female</label>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="editPatientForm.controls.Gender?.touched && editPatientForm.controls.Gender.errors?.required">
+                                Gender is Required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="username">Twitter Handle</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">@</span>
+                            </div>
+                            <input class="form-control" placeholder="Username" type="text">
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="bio">Profile Text</label>
+                        <textarea id="bio" rows="6" class="form-control"></textarea>
+                    </div> -->
+                    <div class="form-row mt-4">
+                        <div class="col-sm-6">
+                            <button class="btn btn-primary btn-block rounded" type="submit">Edit Patient</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+</section>

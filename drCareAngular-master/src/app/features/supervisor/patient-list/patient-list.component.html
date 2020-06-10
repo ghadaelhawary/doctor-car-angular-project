@@ -1,0 +1,107 @@
+<!-- <router-outlet></router-outlet> -->
+
+<!-- Search Section -->
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto pt-5">
+                <h1 class="display-3">Search Center</h1>
+                <div class="lead">Get advice and help from our expert team</div>
+                <form class="mt-5 d-flex flex-column flex-md-row form-group">
+                    <input [(ngModel)]="searchInput" class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3"
+                        name="help-search" placeholder="Search for patients with Name" type="search">
+                    <!-- <button class="btn btn-lg btn-primary rounded" type="submit">Search</button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Result Section -->
+<section *ngIf="allPatients.length > 0" class="bg-light py-5">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
+                <div class="lead">All Patients</div>
+                <div class="table-responsive">
+                    <table class="hover table mb-0 text-right">
+                        <thead class="bg-light border-top">
+                            <tr>
+                                <th scope="col" class="border-0 text-left">
+                                    Patient Name
+                                </th>
+                                <th scope="col" class="border-0">
+                                    National ID
+                                </th>
+                                <th scope="col" class="border-0">
+                                    Gender
+                                </th>
+                                <th scope="col" class="border-0">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let patient of allPatients | patientFilter:searchInput">
+                                <th scope="row" class="text-left">
+                                    {{ patient.Name }}
+                                </th>
+                                <td>
+                                    {{ patient.NID }}
+                                </td>
+                                <td>
+                                    {{ patient.Gender }}
+                                </td>
+                                <td>
+                                    <!-- <button class="btn btn-primary mr-2 rounded" [routerLink]="link.routerLink" type="button">Details</button> -->
+                                    <button class="btn btn-warning mr-2 rounded"
+                                        [routerLink]="['/supervisor/details/'+ patient.NID]"
+                                        type="button">Details</button>
+                                    <button class="btn btn-primary mr-2 rounded"
+                                        [routerLink]="['/supervisor/edit/'+ patient.NID]" type="button">Edit</button>
+                                    <button class="btn btn-danger rounded" (click)="deletePatient(patient.NID)"
+                                        type="button">Delete</button>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th scope="row" class="text-left">
+                                    Additional Service (per hour)
+                                </th>
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    59.00
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary mr-2 rounded" type="button">Edit</button>
+                                    <button class="btn btn-danger rounded" type="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-left">
+                                    Parts for service
+                                </th>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    159.00
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary mr-2 rounded" type="button">Edit</button>
+                                    <button class="btn btn-danger rounded" type="button">Delete</button>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div *ngIf="allPatients.length === 0" class="alert alert-primary text-center my-5" role="alert">
+    <h4 class="alert-heading">Opps</h4>
+    No Patients Found for this Clinic
+</div>

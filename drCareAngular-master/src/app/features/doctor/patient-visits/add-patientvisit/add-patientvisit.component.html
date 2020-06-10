@@ -1,0 +1,263 @@
+<section class="bg-light pb-4 pb-md-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-xl-9 col-lg-10 col-md-11">
+                <div class="row mt-5 mb-4">
+                    <div class="col">
+                        <h3 class="mb-0 pb-0">Add Patient Diagnosis</h3>
+                        <small>This will never be made public</small>
+                    </div>
+                </div>
+
+                <form class="pb-5" [formGroup]="DiagnosisForm" (ngSubmit)="addDiagnosis()">
+
+                    <div class="alert alert-danger mt-3" *ngIf="!DiagnosisForm.valid && generalFormError">
+                        One or More Fields are required
+                    </div>
+
+                    <div class="row form-row">
+                        <!-- Diagnosis Date -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="DiagnosisDate">Diagnosis Date</label>
+                                <input formControlName="DiagnosisDate" bsDatepicker [bsConfig]="DiagnosisDateConfig"
+                                    class="form-control disabled" id="diagnosisDate" disabled>
+                                <small>Auto captured from pc date</small>
+                            </div>
+                        </div>
+
+                        <!-- Revisit Date -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="revisitDate">Revisit Date</label>
+                                <input formControlName="RevisitDate" id="revisitDate" class="form-control input"
+                                    placeholder="Select a date" type="text" bsDatepicker [bsConfig]="RevisitDateConfig">
+                            </div>
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="DiagnosisForm.controls.RevisitDate?.touched && DiagnosisForm.controls.RevisitDate.errors?.required">
+                                Revisit Date is Required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+
+                        <!-- Pressure -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="pressure">Pressure</label>
+                                <input formControlName="Pressure" placeholder="Example: 120/80" type="text"
+                                    class="form-control" id="pressure">
+                            </div>
+
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="DiagnosisForm.controls.Pressure?.touched && DiagnosisForm.controls.Pressure.errors?.required">
+                                Pressure is Required
+                            </div>
+                        </div>
+
+                        <!-- Diabetes -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="diabetes">Diabetes</label>
+                                <input formControlName="Diabetes" placeholder="Example: 150" type="text"
+                                    class="form-control" id="diabetes">
+                                <!-- <small>The user will use this to login to his profile</small> -->
+                            </div>
+
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="DiagnosisForm.controls.Diabetes?.touched && DiagnosisForm.controls.Diabetes.errors?.required">
+                                Diabetes is Required
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-row">
+                        <!-- Diagnosis -->
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="diagnosis">Diagnosis</label>
+                                <textarea formControlName="Diagnosis" id="diagnosis" rows="10" class="form-control"
+                                    placeholder="Example: Lucy is a 34-year old single mother who has recently been diagnosed with a cranial tumour in the right frontal lobe. The diagnosis explains her symptoms of persistent and worsening headache over the last four weeks, which have led her to resign from work and rely more on her mother for support and care. Lucy has also experienced symptoms of increased intracranial pressure, such as nausea, vomiting, and mild photophobia. Hence, it is likely that the tumour is a space-occupying lesion, which is exerting the oedema effect and causing the symptoms that Lucy is experiencing."></textarea>
+                            </div>
+                            <div class="alert alert-danger mt-3"
+                                *ngIf="DiagnosisForm.controls.Diagnosis?.touched && DiagnosisForm.controls.Diagnosis.errors?.required">
+                                Diagnosis is Required
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Medicines -->
+                    <div class="medicine-wrapper py-3">
+
+                        <div class="row form-row py-3">
+                            <div class="col-sm-12 d-flex">
+                                <label class="h4">Medicines</label>
+                                <button [disabled]="DiagnosisForm.controls.Medicines?.invalid"
+                                    (click)="addMedicine()" class="btn btn-success rounded ml-auto w-25"
+                                    type="button">Add Medicine
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row form-row">
+                            <!-- loop over medicines and create col-sm-4 for each new form group inside form array medicines -->
+                            <div class="col-sm-12" formArrayName="Medicines"
+                                *ngFor="let item of DiagnosisForm.get('Medicines')?.controls; let i = index;">
+                                <div class="form-group" [formGroupName]="i">
+                                    
+                                    <div class="row form-row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="medicinename">Medicine Name</label>
+                                                <input formControlName="medicineName" placeholder="Example: panadol"
+                                                    type="text" class="form-control" id="medicinename">
+
+                                                <!-- <div class="alert alert-danger mt-3"
+                                                    *ngIf="DiagnosisForm.controls.Diagnosis?.touched && DiagnosisForm.controls.Diagnosis.errors?.required">
+                                                    Medicine name is Required
+                                                </div> -->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="ProfileCreationDate">How To use</label>
+                                                <input formControlName="medicineHowToUse"
+                                                    placeholder="Example: 3 times a day" type="text"
+                                                    class="form-control" id="country">
+
+                                                <!-- <div class="alert alert-danger mt-3"
+                                                    *ngIf="DiagnosisForm.controls.Diagnosis?.touched && DiagnosisForm.controls.Diagnosis.errors?.required">
+                                                    How to use is Required
+                                                </div> -->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="ProfileCreationDate">For How Long</label>
+                                                <input formControlName="medicineForHowLong"
+                                                    placeholder="Example: repeat for 1 month" type="text"
+                                                    class="form-control" id="country">
+
+                                                <!-- <div class="alert alert-danger mt-3"
+                                                    *ngIf="DiagnosisForm.controls.Diagnosis?.touched && DiagnosisForm.controls.Diagnosis.errors?.required">
+                                                    For how long is Required
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="medicinename">Medicine Name</label>
+                                    <input formControlName="medicineName" placeholder="Example: panadol" type="text"
+                                        class="form-control" id="medicinename">
+
+                                    <div class="alert alert-danger mt-3"
+                                        *ngIf="DiagnosisForm.controls.Diagnosis?.touched && DiagnosisForm.controls.Diagnosis.errors?.required">
+                                        Medicine Name is Required
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <!-- <div class="row form-row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="medicinename">Medicine Name</label>
+                                    <input formControlName="medicineName" placeholder="Example: panadol" type="text"
+                                        class="form-control" id="medicinename">
+
+                                    <div class="alert alert-danger mt-3"
+                                        *ngIf="DiagnosisForm.controls.Diagnosis?.touched && DiagnosisForm.controls.Diagnosis.errors?.required">
+                                        Medicine name is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="ProfileCreationDate">How To use</label>
+                                    <input formControlName="medicineHowToUse" placeholder="Example: 3 times a day"
+                                        type="text" class="form-control" id="country">
+
+                                    <div class="alert alert-danger mt-3"
+                                        *ngIf="DiagnosisForm.controls.Diagnosis?.touched && DiagnosisForm.controls.Diagnosis.errors?.required">
+                                        How to use is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="ProfileCreationDate">For How Long</label>
+                                    <input formControlName="medicineForHowLong"
+                                        placeholder="Example: repeat for 1 month" type="text" class="form-control"
+                                        id="country">
+
+                                    <div class="alert alert-danger mt-3"
+                                        *ngIf="DiagnosisForm.controls.Diagnosis?.touched && DiagnosisForm.controls.Diagnosis.errors?.required">
+                                        For how long is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> -->
+
+                    </div>
+
+
+                    <!-- Recommendations -->
+                    <div class="recommendation-wrapper py-3">
+
+                        <div class="row form-row py-3">
+                            <div class="col-sm-12 d-flex">
+                                <label class="h4">Recommendations</label>
+                                <button (click)="addRecommendation()" [disabled]="DiagnosisForm.controls.Recommendations?.invalid" 
+                                class="btn btn-success rounded ml-auto w-25" type="button">Add Recommendation</button>
+                            </div>
+                        </div>
+
+                        <div class="row form-row">
+                            <div class="col-sm-12" formArrayName="Recommendations"
+                                *ngFor="let item of DiagnosisForm.get('Recommendations')?.controls; let i = index;">
+                                <div class="form-group" [formGroupName]="i">
+                                    <input formControlName="RecommendationName"
+                                        placeholder="Example: Play Sports for 1 hour daily" class="form-control">
+
+                                    <div class="alert alert-danger mt-3"
+                                        *ngIf="DiagnosisForm.controls.RecommendationName?.touched && DiagnosisForm.controls.RecommendationName.errors?.required">
+                                        Recommendation is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row mt-4">
+                        <div class="col-sm-6">
+                            <button class="btn btn-primary btn-block rounded" type="submit">Add Diagnosis</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- 
+                                <div class="form-group">
+                                    <input formControlName="NID" placeholder="Example: Play Sports for 1 hour daily"
+                                        type="text" class="form-control" id="country">
+                                </div> -->

@@ -1,0 +1,57 @@
+<!-- Search Section -->
+<section class="bg-light mysec">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto pt-5">
+                <a class="btn btn-secondary btn-lg btn-block  " routerLink="/admin/clinic/supervisor/add/{{param}}">Add
+                    New Supervisor </a>
+            </div>
+            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto pt-5">
+                <h1 class="display-3">Search Center</h1>
+                <div class="lead">Get advice and help from our expert team</div>
+                <form class="mt-5 d-flex flex-column flex-md-row form-group">
+                    <!-- <input class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3" name="help-search"  placeholder="Search for patients with National ID"   type="search" #query  [(ngModel)]="searchVal"  (ngModelChange)='checkSearchVal()'/> -->
+                    <!-- ngModel="searchbox"  (click)="filter(query.value) -->
+<!-- 
+                    <input type="text" #query [(ngModel)]="nameSerch"
+                        class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3" name="help-search"
+                        placeholder="Search By Name" /> -->
+
+                    <input type="text" #query
+                        class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3" name="help-search"
+                        placeholder="Search By Name" />
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<table class="table table-dark table-hover text-center">
+    <thead class="thead-light">
+
+        <th>NID</th>
+        <th>Name</th>
+        <th>Password</th>
+        <th colspan="3"></th>
+
+        <!-- <th colspan="3"></th> -->
+
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of supers ">
+
+            <td>{{item.NID}}</td>
+            <td>{{item.Name}}</td>
+            <td>{{item.Password}}</td>
+            <a class=" m-3 btn btn-warning" routerLink="/admin/supervisor/edit/{{item.NID}}"> Edit </a>
+            <a class="btn btn-success" routerLink="/admin/supervisor/details/{{item.NID}}"> Details</a>
+            <a class="m-3 btn btn-danger" (click)="deleteOne(item.NID)"> Delete </a>
+
+        </tr>
+
+    </tbody>
+</table>

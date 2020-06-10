@@ -1,0 +1,197 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" class="col-3">
+
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" #sidebar id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/admin">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3"> WElcom <svg class="bi bi-person-fill" width="60px" height="50px"
+              viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M5 16s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H5zm5-6a3 3 0 100-6 3 3 0 000 6z"
+                clip-rule="evenodd" />
+            </svg>
+            <i class="far fa-grin-hearts"></i></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin">
+            <svg class="bi bi-arrow-left-short" width="3em" height="4em" viewBox="0 0 20 20" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M9.854 6.646a.5.5 0 010 .708L7.207 10l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z"
+                clip-rule="evenodd" />
+              <path fill-rule="evenodd" d="M6.5 10a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H7a.5.5 0 01-.5-.5z"
+                clip-rule="evenodd" />
+            </svg>
+            <span>clinic List</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          <button type="button" class="btn mce-btn-group mce-btn-large btn-primary">
+            HI Admin <span class="badge badge-light">
+              <svg class="bi bi-award" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2l1.669.864 1.858.282.842 1.68 1.337 1.32L15.4 8l.306 1.854-1.337 1.32-.842 1.68-1.858.282L10 14l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L4.6 8l-.306-1.854 1.337-1.32.842-1.68 1.858-.282L10 2z" />
+                <path d="M6 13.794V18l4-1 4 1v-4.206l-2.018.306L10 15.126 8.018 14.1 6 13.794z" />
+              </svg></span> <br>
+            welcom, you will responsible for adding doctor and supervisor, <br> wish you good kuck
+
+
+            <!-- <span class="sr-only">fsdfsdfsd</span> -->
+          </button>
+        </div>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+
+
+        <!-- Divider -->
+
+
+        <!-- Sidebar Toggler (Sidebar) -->
+
+
+      </ul>
+    </div>
+    <!--end wrapper -->
+    <!-- End of Sidebar -->
+    <div class="container-fluid col-9">
+
+      <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+
+
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+
+                <li routerLinkActive="active current" class="nav-item active">
+                  <button style="background-color: #6388d8;" type="button" class=" btn btn-lg  btn-outline-dark ml-4 mr-5" 
+                    (click)="ActivateDoctor()"> Doctor </button>
+
+
+                </li>
+
+                <li class="nav-item" routerLinkActive="active current">
+                  <button type="button" class="btn-lg btn btn-outline-dark ml-2 " style="background-color: #85f0e7;"
+                    (click)='ActivateSupervisor()'>Supervisor</button>
+                </li>
+              </ul>
+            </div>
+
+            <ul class="navbar-nav ml-auto">
+
+
+
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages fifth commeny ******** -->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                  aria-labelledby="searchDropdown">
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        aria-label="Search" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+
+                  <div class="dropdown-divider"></div>
+
+                </div>
+              </li>
+
+            </ul>
+
+
+          </nav>
+
+
+
+
+          <app-doctorlist *ngIf="doctorIsActive"></app-doctorlist>
+
+          <app-supervisorlist *ngIf="supervisorIsActive"></app-supervisorlist>
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div class="">.</div> -->
+
+  </div> <!-- end row -->
+
+
+</div> <!-- end container fluid -->
+
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li routerLinkActive="active current" class="nav-item active">
+          <button type="button" class=" btn btn-lg  btn-outline-dark btn-warning ml-4 mr-5"   (click)='Value="Doctor"'>  Doctor </button> -->
+
+<!-- <a class="nav-link"  [routerLink]="['admin/doctor',doctor.NID]">  Doctor <span class="sr-only">(current)</span></a> -->
+
+
+<!-- </li>
+
+        <li class="nav-item" routerLinkActive="active current">
+          <button type="button" class="btn-lg btn btn-outline-dark btn-danger ml-2"  (click)='Value="Supervisor"'>Supervisor</button>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+-->

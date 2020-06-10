@@ -1,0 +1,104 @@
+<!-- <router-outlet></router-outlet> -->
+
+
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-9 col-md-11">
+                <!-- <a href="careers-1.html">Back to Careers</a> -->
+                <div class="card card-body shadow mt-4">
+                    <!-- <div
+                        class="d-flex flex-column flex-sm-row justify-content-between align-items-start pb-2 mb-2 mb-md-2 border-bottom">
+                        <div class="mb-3">
+                            <h1 class="mb-2"></h1>
+                            <div class="lead">National ID - Profile Creation Date</div>
+                        </div>
+                    </div> -->
+                    <div
+                        class="d-flex flex-column flex-sm-row justify-content-between align-items-start pb-2 mb-2 mb-md-2 border-bottom">
+                        <div class="mb-3">
+                            <h1 class="mb-2">Patient Name: {{ patientBasicInfo?.Name }}</h1>
+                            <div class="lead">Profile Creation Date: {{ patientBasicInfo?.ProfileCreationDate | date }}</div>
+                            <h4 class="mb-2">National ID: <span class="text-success">{{ patientBasicInfo?.NID }}</span></h4>
+
+                            <h5 class="mb-2 bg-light">Password: {{ patientBasicInfo?.Password }}</h5>
+                            <h5 class="mb-2 bg-light">Gender: {{ patientBasicInfo?.Gender }}</h5>
+                            <h5 class="mb-2 bg-light">Date of Birth: {{ patientBasicInfo?.DateOfBirth | date }}</h5>
+                        </div>
+                    </div>
+
+
+                    <!-- Diagnosis Div -->
+                    <div *ngFor="let diagnos of patientDiagnosis" class="diagnosis border-bottom py-3">
+                        <div
+                            class="d-flex flex-column flex-sm-row justify-content-between align-items-start pb-2 mb-2 mb-md-2">
+                            <div class="mb-5 mb-md-0">
+                                <h4 class="mb-2">Diagnosis made by: <span class="text-success">{{ diagnos?.Doctor?.Name }}</span></h4>
+                                <div class="lead">Diagnosis Date : <span class="text-success">{{ diagnos?.DiagnosisDate | date }}</span></div>
+                            </div>
+                        </div>
+                        <div
+                            class="d-flex flex-column flex-sm-row justify-content-between align-items-start pb-2 mb-2 mb-md-2">
+                            <div class="mb-3 mb-md-0">
+                                <h5 class="mb-2 bg-light">Presser: {{ diagnos?.Pressure }}</h5>
+                                <h5 class="mb-2 bg-light">Suger: {{ diagnos?.Diabetes }}</h5>
+                            </div>
+                        </div>
+                        <article class="article">
+                            <h5 class="bg-light">Diagnosis:</h5>
+                            <p>
+                                {{ diagnos?.Diagnosis }}
+                            </p>
+                            <h5 class="bg-light">Medicines Described:</h5>
+                            <table class="table table-bordered text-center">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Medicine Name</th>
+                                        <th>How to use</th>
+                                        <th>For How Much Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let medicine of diagnos.Medicines">
+                                        <td>{{ medicine?.medicineName }}</td>
+                                        <td>{{ medicine?.medicineHowToUse }}</td>
+                                        <td>{{ medicine?.medicineForHowLong }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="mt-3 py-3">
+                                <h5 class="bg-light">Recommendations:</h5>
+                                <ul>
+                                    <li *ngFor="let item of diagnos.Recommendations">
+                                        {{ item?.RecommendationName }}
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-3 py-3">
+                                <h5 class="bg-light">Revisit Date:</h5>
+                                <ul>
+                                    <li class="font-weight-bold">
+                                        {{ diagnos?.RevisitDate | date }}
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </article>
+                    </div>
+
+                    <!-- Policy -->
+                    <div class="mt-5 py-3">
+                        <h6>Dr.care Diagnosis Policy</h6>
+                        <small>
+                            We do not sell, trade, or otherwise transfer to outside parties your personally identifiable information. This does not include trusted third parties who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to keep this information confidential. We may also release your information when we believe release is appropriate to comply with the law, enforce our site policies, or protect ours or others rights, property, or safety. However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.
+                            All credit/debit cards details and personally identifiable information will NOT be stored, sold, shared, rented or leased to any third parties.
+                            The Website Policies and Terms & Conditions may be changed or updated occasionally to meet the requirements and standards. Therefore the Customers’ are encouraged to frequently visit these sections in order to be updated about the changes on the website. Modifications will be effective on the day they are posted.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

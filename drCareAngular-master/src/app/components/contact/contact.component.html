@@ -1,0 +1,106 @@
+<!-- ======================= Header ======================= -->
+<section class="hero-wrap hero-wrap-2" style="background-image: url('../../../assets/images/bg_1.jpg');"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9  text-center">
+                <h1 class="mb-2 bread">Contact Us</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a [routerLink]="['/home']">Home <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i
+                            class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= Form ======================= -->
+<section class="ftco-section ftco-no-pt ftco-no-pb contact-section bg-light">
+    <div class="container">
+        <div class="row d-flex align-items-stretch no-gutters">
+            <div class="col-md-12 p-4 p-md-5 order-md-last ">
+
+                <form method="GET" [formGroup]="contactForm" (ngSubmit)="sendEmail()">
+
+                    <div class="alert alert-danger mt-3" *ngIf="!contactForm.valid && generalFormError">
+                        One or More Fields are required
+                    </div>
+
+                    <div class="alert alert-success mt-3" *ngIf="contactForm.valid && !generalFormError && submitted">
+                        {{ successMessage }}
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="Name" class="form-control" placeholder="Your Name">
+                        <div class="alert alert-danger mt-3"
+                            *ngIf="contactForm.controls.Name?.touched && contactForm.controls.Name.errors?.required">
+                            Name is Required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="Email" class="form-control" placeholder="Your Email">
+                        <div class="alert alert-danger mt-3"
+                            *ngIf="contactForm.controls.Email?.touched && contactForm.controls.Email.errors?.required">
+                            Email is Required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="Subject" class="form-control" placeholder="Subject">
+                        <div class="alert alert-danger mt-3"
+                            *ngIf="contactForm.controls.Subject?.touched && contactForm.controls.Subject.errors?.required">
+                            Subject is Required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea formControlName="Message" cols="30" rows="7" class="form-control"
+                            placeholder="Message"></textarea>
+                        <div class="alert alert-danger mt-3"
+                            *ngIf="contactForm.controls.Message?.touched && contactForm.controls.Message.errors?.required">
+                            Message is Required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- <div class="col-md-6 d-flex align-items-stretch">
+                <div id="map"></div>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<!-- ======================= Contact Information ======================= -->
+<section class="ftco-section contact-section">
+    <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+            <div class="col-md-12 mb-4">
+                <h2 class="h4">Contact Information</h2>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

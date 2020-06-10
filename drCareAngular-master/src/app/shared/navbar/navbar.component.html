@@ -1,0 +1,48 @@
+<!-- ======================= Navbar ======================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container d-flex align-items-center">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <!-- <p class="button-custom order-lg-last mb-0 mr-3">
+            <a [routerLink]="['/supervisor/add']" class="btn btn-secondary py-2 px-3">
+                Add Patient
+            </a>
+        </p> -->
+        
+        <p class="button-custom order-lg-last mb-0 mr-3">
+            <a [routerLink]="['/login']" class="btn btn-secondary py-2 px-3">
+                Login
+            </a>
+        </p>
+        <!-- <p  *ngIf="!router.urlTree.contains(router.createUrlTree(['/patientDashboard']))" class="button-custom order-lg-last mb-0">
+            <a [routerLink]="['/home']" class="btn btn-secondary py-2 px-3">
+                Logout
+            </a>
+        </p> -->
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item" routerLinkActive="active">
+                    <a [routerLink]="['/home']" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a [routerLink]="['/about']" class="nav-link">About</a>
+                </li>
+                <!-- <li class="nav-item"><a href="doctor.html" routerLinkActive="active" class="nav-link">Doctor</a></li> -->
+                <li class="nav-item" routerLinkActive="active">
+                    <a [routerLink]="['/department']" class="nav-link">Departments</a>
+                </li>
+                <!-- <li class="nav-item"><a href="pricing.html" routerLinkActive="active" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="blog.html" routerLinkActive="active" class="nav-link">Blog</a></li> -->
+
+                <!-- <li class="nav-item" routerLinkActive="active">
+                    <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+                </li> -->
+
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,66 @@
+<!-- Search Section -->
+<section class="bg-light mysec">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto pt-5">
+                <a class="btn btn-secondary btn-lg btn-block  " routerLink="/admin/clinic/doctor/add/{{param}}">Add New
+                    Doctor </a>
+            </div>
+            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto pt-5">
+                <h1 class="display-3">Search Center</h1>
+                <div class="lead">Get advice and help from our expert team</div>
+                <form class="mt-5 d-flex flex-column flex-md-row form-group">
+                    <!-- <input class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3" name="help-search"  placeholder="Search for patients with National ID"   type="search" #query  [(ngModel)]="searchVal"  (ngModelChange)='checkSearchVal()'/> -->
+                    <!-- ngModel="searchbox"  (click)="filter(query.value) -->
+                    <!-- <input type="text" #query [(ngModel)]="nameSerch"
+                        class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3" name="help-search"
+                        placeholder="Search By Name" /> -->
+
+                    <input type="text" #query
+                        class="form-control form-control-lg h-100 mb-2 mb-md-0 mr-md-3" name="help-search"
+                        placeholder="Search By Name" />
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--********************** body *************** -->
+
+
+
+<!-- <a class="btn btn-info p-2 m-2 " routerLink="/admin/clinic/add" >Add New nDoctor</a> -->
+<table class="table table-dark table-hover text-center">
+    <thead class="thead-light">
+        <!-- <th>ID</th> -->
+        <th>NID </th>
+        <th> Name </th>
+        <th> Password </th>
+        <th> Department </th>
+
+        <th colspan="1"></th>
+
+
+
+
+
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of specDoc ">
+
+            <!-- | nameFilter:nameSerch" -->
+            <td>{{item.NID}}</td>
+            <td>{{item.Name}}</td>
+            <td>{{item.Password}}</td>
+            <td>{{item.Department}}</td>
+
+
+
+            <a class=" m-3 btn btn-warning" routerLink="/admin/doctor/edit/{{item.NID}}"> Edit </a>
+            <a class="btn btn-success" routerLink="/admin/doctor/details/{{item.NID}}"> Details</a>
+            <a class="m-3 btn btn-danger" (click)="deleteOne(item.NID)"> Delete </a>
+
+        </tr>
+
+    </tbody>

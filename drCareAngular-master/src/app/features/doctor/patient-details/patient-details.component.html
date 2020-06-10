@@ -1,0 +1,50 @@
+<!-- <router-outlet></router-outlet> -->
+
+
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center py-3 px-3">
+            <div class="col-xl-10 col-lg-9 col-md-11">
+                <!-- <a href="careers-1.html">Back to Careers</a> -->
+                <div class="card card-body shadow mt-4">
+                    <div
+                        class="d-flex flex-column flex-sm-row justify-content-between align-items-start pb-2 mb-2 mb-md-2">
+                        <div class="mb-3">
+                            <h1 class="mb-2">Patient Name: {{ patient.Name }}</h1>
+                            <div class="lead">Profile Creation Date: {{ patient.ProfileCreationDate | date }}</div>
+                            <h4 class="mb-2">National ID: <span class="text-success">{{ patient.NID }}</span></h4>
+
+                            <h5 class="mb-2 bg-light">Password: {{ patient.Password }}</h5>
+                            <h5 class="mb-2 bg-light">Gender: {{ patient.Gender }}</h5>
+                            <h5 class="mb-2 bg-light">Date of Birth: {{ patient.DateOfBirth | date }}</h5>
+                        </div>
+                    </div>
+                    <button class="btn btn-info mr-2 rounded" [routerLink]="['/doctor/patient/visits/'+ patient._id]" type="button">See All Visits</button>
+
+
+                    <!-- Diagnosis Div -->
+                    <!-- <div class="diagnosis">
+                        <div
+                            class="d-flex flex-column flex-sm-row justify-content-between align-items-start pb-2 mb-2 mb-md-2">
+                            <div class="mb-5 mb-md-0">
+                            </div>
+                        </div>
+                        <div
+                            class="d-flex flex-column flex-sm-row justify-content-between align-items-start pb-2 mb-2 mb-md-2">
+                            <div class="mb-3 mb-md-0">
+
+                            </div>
+                            <a href="#apply-form" class="btn btn-primary" data-smooth-scroll>Apply Now</a>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+            
+        </div>
+        
+       
+    </div>
+</section>
+
+

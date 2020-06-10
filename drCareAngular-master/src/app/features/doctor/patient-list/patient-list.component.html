@@ -1,0 +1,55 @@
+<section *ngIf="allPatient.length > 0" class="bg-light py-5">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
+                <div class="lead">All Patients</div>
+                <div class="table-responsive">
+                    <table class="hover table mb-0 text-right">
+                        <thead class="bg-light border-top">
+                            <tr>
+                                <th scope="col" class="border-0 text-left">
+                                    Patient Name
+                                </th>
+                                <th scope="col" class="border-0">
+                                    National ID
+                                </th>
+                                <th scope="col" class="border-0">
+                                    Gender
+                                </th>
+                                <th scope="col" class="border-0">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let patient of allPatient">
+                                <th scope="row" class="text-left">
+                                    {{ patient.Name }}
+                                </th>
+                                <td>
+                                    {{ patient.NID }}
+                                </td>
+                                <td>
+                                    {{ patient.Gender }}
+                                </td>
+                                <td>
+                                    <!-- <button class="btn btn-primary mr-2 rounded" [routerLink]="link.routerLink" type="button">Details</button> -->
+                                    <button class="btn btn-warning mr-2 rounded" [routerLink]="['/doctor/patient/details/'+ patient._id]" type="button">Details</button>
+                                    
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div *ngIf="allPatient.length === 0" class="alert alert-primary text-center my-5" role="alert">
+    <h4 class="alert-heading">Opps</h4>
+    No Patients Found for this Clinic
+</div>
+
+

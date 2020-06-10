@@ -1,0 +1,95 @@
+<!-- ======================= Free consultation ======================= -->
+<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter"
+    style="background-image: url(../../../assets/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto py-5">
+                <div class="heading-section heading-section-white  mb-5">
+                    <span class="subheading">Consultation</span>
+                    <h2 class="mb-4">Login to your account</h2>
+                    <p>
+                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+                        live the
+                        blind texts.
+                    </p>
+                    <div *ngIf="ErrorFlag" class="alert alert-danger" role="alert">
+                        {{ ErrorMsg }}
+                    </div>
+                </div>
+
+                <!-- Beginning of Form -->
+                <form [formGroup]="loginForm" (ngSubmit)="submit()" class="appointment-form">
+
+                    <div class="alert alert-danger mt-3" *ngIf="!loginForm.valid && generalFormError">
+                        One or More Fields are required
+                    </div>
+
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            <div class="select-wrap">
+                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                <!-- Select -->
+                                <select name="Role" class="form-control" formControlName="Role">
+                                    <option value="" disabled>Select Your Role</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Doctor</option>
+                                    <option value="3">Clinic Supervisior</option>
+                                    <option value="4">Patient</option>
+                                </select>
+
+                                <div class="alert alert-danger mt-5" *ngIf="loginForm.controls.Role?.touched && loginForm.controls.Role.errors?.required">
+                                    Role is Required
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            <!-- National ID -->
+                            <input formControlName="NID" pattern="^(\d{14})$" type="number" class="form-control"
+                                placeholder="National ID">
+
+                            <div class="alert alert-danger mt-5" *ngIf="loginForm.controls.NID?.touched && loginForm.controls.NID.errors?.required">
+                                National Id is Required
+                            </div>
+
+                            <div class="alert alert-danger mt-5" *ngIf="loginForm.controls.NID?.touched && loginForm.controls.NID.errors?.pattern?.requiredPattern">
+                                National ID must be 14 Numbers
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            <!-- Password -->
+                            <input formControlName="Password" type="password" class="form-control"
+                                placeholder="Password">
+
+                            <div class="alert alert-danger mt-5" *ngIf="loginForm.controls.Password?.touched && loginForm.controls.Password.errors?.required">
+                                Password is Required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [disabled]="!loginForm.valid" -->
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary py-3 px-4">
+                            Login
+                        </button>
+                    </div>
+                </form>
+
+                <!-- {{ loginForm.value |json}} -->
+
+            </div>
+
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,14 @@
+{
+  "sliderArray": [
+    {
+      "img": "assets/images/bg_1.jpg",
+      "alt": "slider img 1",
+      "text": "EVERYDAY WE BRING HOPE AND SMILE TO THE PATIENT WE SERVE"
+    },
+    {
+      "img": "assets/images/bg_2.jpg",
+      "alt": "slider img 2",
+      "text": "Medical specialty concerned with the care of acutely ill hospitalized patients"
+    }
+  ]
+}

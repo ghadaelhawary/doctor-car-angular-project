@@ -1,0 +1,34 @@
+<!-- ======================= Navbar ======================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light py-lg-0" id="ftco-navbar">
+    <div class="container d-flex align-items-center">
+        <div class="pr-4 d-flex align-items-center">
+            <a class="navbar-brand">Dr.<span _ngcontent-dcv-c1="">care</span></a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a [routerLink]="['/doctor/patients/list']" class="nav-link py-4">Patients List</a>
+                </li>
+                <!-- <li class="nav-item" routerLinkActive="active">
+                    <a [routerLink]="['/supervisor/add']" class="nav-link py-4">Add Patient</a>
+                </li> -->
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item d-flex align-items-center" routerLinkActive="active">
+                    <a (click)="logout()" class="nav-link btn btn-secondary py-2 px-3">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,207 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" class="col-3">
+
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" #sidebar id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="cliniclist.component.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3"> WElcom <svg class="bi bi-person-fill" width="60px" height="50px"
+              viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M5 16s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H5zm5-6a3 3 0 100-6 3 3 0 000 6z"
+                clip-rule="evenodd" />
+            </svg>
+            <i class="far fa-grin-hearts"></i></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="admin">
+            <svg class="bi bi-arrow-left-short" width="3em" height="4em" viewBox="0 0 20 20" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M9.854 6.646a.5.5 0 010 .708L7.207 10l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z"
+                clip-rule="evenodd" />
+              <path fill-rule="evenodd" d="M6.5 10a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H7a.5.5 0 01-.5-.5z"
+                clip-rule="evenodd" />
+            </svg>
+            <span>clinic List</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          <button type="button" class="btn mce-btn-group mce-btn-large btn-primary">
+            HI Admin <span class="badge badge-light">
+              <svg class="bi bi-award" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2l1.669.864 1.858.282.842 1.68 1.337 1.32L15.4 8l.306 1.854-1.337 1.32-.842 1.68-1.858.282L10 14l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L4.6 8l-.306-1.854 1.337-1.32.842-1.68 1.858-.282L10 2z" />
+                <path d="M6 13.794V18l4-1 4 1v-4.206l-2.018.306L10 15.126 8.018 14.1 6 13.794z" />
+              </svg></span> <br>
+            welcom, you will responsible for adding doctor and supervisor, <br> wish you good kuck
+
+
+            <!-- <span class="sr-only">fsdfsdfsd</span> -->
+          </button>
+        </div>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <!-- (click)="toggoleSideBar" -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+      </ul>
+    </div>
+    <!--end wrapper -->
+
+
+    <!-- End of Sidebar -->
+    <div class="container-fluid col-9">
+
+      <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+
+
+          <!--************************************************** datails********************** -->
+
+
+          <section class="bg-light pb-4 pb-md-5">
+            <div class="container">
+              <div class="row align-items-center justify-content-center">
+                <div class="col-xl-9 col-lg-10 col-md-11">
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <h3 class="mb-0 pb-0">Add Supervisor info</h3>
+                      <small>This will never be made public</small>
+
+                    </div>
+                  </div>
+                  <form class="pb-5" [formGroup]="AddSupervisorForm" (ngSubmit)="AddSupervisor()">
+
+                    <div class="alert alert-danger mt-3" *ngIf="!AddSupervisorForm.valid && generalFormError">
+                      One or More Fields are required
+                    </div>
+
+                    <!-- Profile Creation Date -->
+                    <div class="row form-row">
+
+                      <!-- Name -->
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="city">Name</label>
+                          <input formControlName="Name" type="text" class="form-control" id="city">
+                        </div>
+
+                        <div class="alert alert-danger mt-3"
+                          *ngIf="AddSupervisorForm.controls.Name?.touched && AddSupervisorForm.controls.Name.errors?.required">
+                          Name is Required
+                        </div>
+                      </div>
+
+                      <!-- National ID -->
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="country">National ID</label>
+                          <input formControlName="NID" pattern="^(\d{14})$" type="text" class="form-control"
+                            id="country">
+                          <small>The user will use this to login to his profile</small>
+                        </div>
+
+                        <div class="alert alert-danger mt-3"
+                          *ngIf="AddSupervisorForm.controls.NID?.touched && AddSupervisorForm.controls.NID.errors?.required">
+                          National ID is Required
+                        </div>
+
+                        <div class="alert alert-danger mt-3"
+                          *ngIf="AddSupervisorForm.controls.NID?.touched && AddSupervisorForm.controls.NID.errors?.pattern?.requiredPattern">
+                          National ID must be 14 Numbers
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row form-row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="password">Supervisor Password</label>
+                          <input formControlName="Password" type="text" class="form-control" id="password">
+                          <small>The user will use this to login to his profile</small>
+                        </div>
+                        <div class="alert alert-danger mt-3"
+                          *ngIf="AddSupervisorForm.controls.Password?.touched && AddSupervisorForm.controls.Password.errors?.required">
+                          Patient Password is Required
+                        </div>
+                      </div>
+
+                      <!-- Department -->
+
+
+                    </div>
+
+                    <!-- <div class="row form-row"> 
+                                 Patient Password 
+                                 <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password">Doctor clinic</label>
+                                        <input formControlName="Clinic" [(ngModel)]="SupervisorInfo.Clinic" type="text" class="form-control" id="password">
+                                        <small>The user will use this to login to his profile</small>
+                                    </div>
+                                    <div class="alert alert-danger mt-3" *ngIf="AddSupervisorForm.controls.Clinic?.touched && AddSupervisorForm.controls.Clinic.errors?.required">
+                                        clinic name is Required
+                                    </div>
+                                </div>
+                               </div> -->
+
+                    <div class="form-row mt-4">
+                      <div class="col-sm-6">
+                        <button class="btn btn-primary btn-block rounded" type="submit">Add Supervisor</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+
+
+          </section>
+
+          <!-- *********end form ***********   -->
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div class="">.</div> -->
+
+  </div> <!-- end row -->
+
+
+</div> <!-- end container fluid -->
